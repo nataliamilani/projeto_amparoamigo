@@ -1,0 +1,40 @@
+services:
+  
+  # SERVICE DISCOVERY #
+  eureka:
+    extends:
+      file: ./eureka/eureka.yml
+      service: eureka
+    
+  # SOLICITACAO SERVICO #
+  solicitacaoong:
+    extends:
+      file: './solicitacaoong/solicitacao.yml'
+      service: solicitacaoong
+    links: 
+    - dbsolicitacao
+    restart: on-failure
+    depends_on:
+      - eureka
+      - dbsolicitacao
+  dbsolicitacao:
+    extends:
+      file: './solicitacaoong/database.yml'
+      service: dbsolicitacao
+    restart: on-failure
+
+    # API-GATEWAY #
+  apigateway:
+    image: natasilva01/api-gateway
+    container_name: api-gateway
+    ports:
+      - '9000:9000'
+    networks:
+      - net-driver
+    depends_on:
+      - prometheus
+
+  
+networks:
+  net-driver:
+    driver: bridge

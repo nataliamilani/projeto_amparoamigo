@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+
+  solicitacaoong:
+    container_name: app-solicitacaoong
+    image: natasilva01/solicitacao-servico
+    ports:
+      - '8082:8082'
+    networks:
+      - net-driver
