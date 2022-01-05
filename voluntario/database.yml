@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+
+  db:
+    image: mysql
+    container_name: dbvoluntario
+    hostname: dbvoluntario
+    restart: always
+    networks:
+      - net-driver
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: voluntariodb
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
