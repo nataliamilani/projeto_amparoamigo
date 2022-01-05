@@ -1,7 +1,7 @@
 version: '3.5'
 services:
 
-  db:
+  dbvoluntario:
     image: mysql
     container_name: dbvoluntario
     hostname: dbvoluntario

@@ -29,15 +29,15 @@ services:
       file: ./voluntario/voluntario.yml
       service: voluntario
     links:
-      - db
+      - dbvoluntario
     restart: on-failure
     depends_on:
       - eureka
-      - db
-  db:
+      - dbvoluntario
+  dbvoluntario:
     extends:
       file: ./voluntario/database.yml
-      service: db
+      service: dbvoluntario
     restart: on-failure
 
   # API-GATEWAY #
