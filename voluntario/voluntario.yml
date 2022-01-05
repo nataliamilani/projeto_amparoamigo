@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+
+  voluntario:
+    container_name: app-voluntario
+    image: nataliamilani/voluntario-amparoamigo
+    ports:
+      - '8081:8081'
+    networks:
+      - net-driver

@@ -5,14 +5,14 @@ services:
     extends:
       file: ./eureka/eureka.yml
       service: eureka
-    
+
   # SOLICITACAO SERVICO #
   solicitacaoong:
     extends:
       file: './solicitacaoong/solicitacao.yml'
       service: solicitacaoong
-    links: 
-    - dbsolicitacao
+    links:
+      - dbsolicitacao
     restart: on-failure
     depends_on:
       - eureka
@@ -23,7 +23,24 @@ services:
       service: dbsolicitacao
     restart: on-failure
 
-    # API-GATEWAY #
+  # VOLUNTARIO #
+  voluntario:
+    extends:
+      file: ./voluntario/voluntario.yml
+      service: voluntario
+    links:
+      - db
+    restart: on-failure
+    depends_on:
+      - eureka
+      - db
+  db:
+    extends:
+      file: ./voluntario/database.yml
+      service: db
+    restart: on-failure
+
+  # API-GATEWAY #
   apigateway:
     image: natasilva01/api-gateway
     container_name: api-gateway
@@ -31,10 +48,7 @@ services:
       - '9000:9000'
     networks:
       - net-driver
-    depends_on:
-      - prometheus
 
-  
 networks:
   net-driver:
     driver: bridge
