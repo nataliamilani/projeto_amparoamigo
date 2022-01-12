@@ -6,6 +6,12 @@ services:
       file: ./eureka/eureka.yml
       service: eureka
 
+  # FRONT #
+  front:
+    extends:
+      file: ./front/front.yml
+      service: front
+
   # SOLICITACAO SERVICO #
   solicitacaoong:
     extends:
