@@ -11,6 +11,12 @@ services:
     extends:
       file: ./front/front.yml
       service: front
+    links:
+      - voluntario
+      - solicitacaoong
+    depends_on:
+      - voluntario
+      - solicitacaoong
 
   # SOLICITACAO SERVICO #
   solicitacaoong:
