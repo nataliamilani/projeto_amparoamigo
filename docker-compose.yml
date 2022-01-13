@@ -11,6 +11,15 @@ services:
     extends:
       file: ./front/front.yml
       service: front
+    links:
+      - voluntario
+      - solicitacaoong
+      - apigateway
+    restart: on-failure
+    depends_on:
+      - voluntario
+      - solicitacaoong
+      - apigateway
 
   # SOLICITACAO SERVICO #
   solicitacaoong:
