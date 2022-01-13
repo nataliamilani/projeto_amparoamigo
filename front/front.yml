@@ -3,7 +3,7 @@ services:
 
   front:
     container_name: amparo-front
-    image: warleyvods/front
+    image: warleyvods/front:1.0
     ports:
       - '80:8080'
     networks:
