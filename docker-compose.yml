@@ -14,10 +14,12 @@ services:
     links:
       - voluntario
       - solicitacaoong
+      - apigateway
     restart: on-failure
     depends_on:
       - voluntario
       - solicitacaoong
+      - apigateway
 
   # SOLICITACAO SERVICO #
   solicitacaoong:
